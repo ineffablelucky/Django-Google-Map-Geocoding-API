@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="{% static 'address_map/map.css' %}" rel="stylesheet">
+  </head>
+  <body>
+
+    <div id="map"></div>
+
+
+    <script src="{% static 'address_map/main.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq7oupLqHM2F9VQkuhukC6eIGwe2U1kFU&callback=initMap"
+    async defer></script>
+
+
+  </body>
+</html>
