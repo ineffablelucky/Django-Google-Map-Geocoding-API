@@ -3,5 +3,9 @@
        * element that contains the map. */
 #map {
     height: 600px;
-    width: 600px;
+    width : 100%;
+}
+
+.modal-content{
+    width: 100%;
 }
