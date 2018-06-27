@@ -14,18 +14,19 @@ function initMap() {
     });
 
     var marker1 = new google.maps.Marker({
-        position: {lat: 28.5830, lng: 77.3132},
-        map: map,
-        icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+            position: {lat: 28.5830, lng: 77.3132},
+            map: map,
+            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
     });
 
-    map.addListener('click', function(e) {
-
-        var marker
-        marker = new google.maps.Marker({
-        position: e.latLng,
-        map: map
+    marker = new google.maps.Marker({
+            position : {},
+            map: map
         });
+
+    map.addListener('click', function(e) {
+            console.log(e.latLng.latitude)
+            marker.position = parseFloat(e.latLng)
 
 
     });
