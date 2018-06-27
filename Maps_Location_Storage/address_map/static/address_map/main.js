@@ -21,19 +21,16 @@ function initMap() {
 
     map.addListener('click', function(e) {
 
-        placeMarkerAndPanTo(e.latLng, map);
-
-
-    });
-
-}
-
-function placeMarkerAndPanTo(latLng, map) {
-
-    var marker = new google.maps.Marker({
-        position: latLng,
+        var marker
+        marker = new google.maps.Marker({
+        position: e.latLng,
         map: map
+        });
+
+
     });
 
 }
+
+
 
