@@ -1,5 +1,5 @@
 var map;
-var coordinates;
+
 var componentForm = {
         locality: 'long_name',
         administrative_area_level_1: 'short_name',
@@ -27,26 +27,27 @@ function initMap() {
             icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
     });
 
-    var marker = new google.maps.Marker({
-        position: {lat: 28.5355, lng: 77.3910},
-        map: map
-       });
+//    var marker = new google.maps.Marker({
+//        position: {lat: 28.5355, lng: 77.3910},
+//        map: map
+//       });
 
     var geocoder = new google.maps.Geocoder
 
-
+    var marker;
     map.addListener('click', function(e) {
+        if(marker && marker.setMap){
+            marker.setMap(null);
+        }
 
-        marker.setMap(null);
-
-        var marker_new = new google.maps.Marker({
+        marker = new google.maps.Marker({
             position: e.latLng,
             map: map
         });
 
-        marker = marker_new;
+        //marker = marker_new;
 
-        coordinates = {lat: parseFloat(e.latLng.lat()), lng: parseFloat(e.latLng.lng())}
+        var coordinates = {lat: parseFloat(e.latLng.lat()), lng: parseFloat(e.latLng.lng())}
 
         geocoder.geocode({'location': coordinates}, function(results, status) {
 
@@ -80,8 +81,8 @@ function Auto_fill_Address(result){
 
           if (componentForm[addressType]) {
 
-            var val = result.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
+                var val = result.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
 
           }
     }

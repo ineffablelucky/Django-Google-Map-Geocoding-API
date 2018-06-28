@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 {% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,10 +15,10 @@
 
 </head>
 <body>
- <form method="POST">
+ <form id="create" method="POST">
      {% csrf_token %}
      {{ form.as_p}}
-
+     <input type="submit" value="Confirm"/>
  </form>
 
 <!-- Google map pop-up-->
