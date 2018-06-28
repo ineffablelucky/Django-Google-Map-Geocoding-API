@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.gis.db import models
 
 
 class Location(models.Model):
 
     name = models.CharField(max_length=100, blank=True)
-    lat = models.DecimalField('Latitude', max_digits=10, decimal_places=8)
-    lng = models.DecimalField('Longitude', max_digits=10, decimal_places=8)
+    lat = models.PointField()
+    lng = models.PointField()
     address = models.CharField(max_length=500, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True)
     state = models.CharField(max_length=100, null=True, blank=True)

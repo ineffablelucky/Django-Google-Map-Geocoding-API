@@ -20,22 +20,32 @@ class CreateForm(forms.ModelForm):
     city = forms.CharField(max_length=100, required=False, strip=True, widget=forms.TextInput(
             attrs={'type': 'text',
                    'class': 'form-control city',
-                   'id': 'add_city',
+                   'id': 'locality',
                    'placeholder': 'city'}))
 
     state = forms.CharField(max_length=100, required=False, strip=True, widget=forms.TextInput(
             attrs={'type': 'text',
                    'class': 'form-control states',
-                   'id': 'add_state',
+                   'id': 'administrative_area_level_1',
                    'placeholder': 'state'}))
 
     country = forms.CharField(max_length=100, required=False, strip=True, widget=forms.TextInput(
             attrs={'type': 'text',
                    'class': 'form-control country',
-                   'id': 'add_country',
+                   'id': 'country',
                    'placeholder': 'country'}))
+
+    lat = forms.CharField(max_length=100, required=False, strip=True, widget=forms.TextInput(
+            attrs={'type': 'hidden',
+                   'class': 'form-control lat',
+                   'id': 'add_lat'}))
+
+    lng = forms.CharField(max_length=100, required=False, strip=True, widget=forms.TextInput(
+            attrs={'type': 'hidden',
+                   'class': 'form-control lng',
+                   'id': 'add_lng'}))
 
     class Meta:
 
         model = Location
-        exclude = ('lat', 'lng')
+        fields = '__all__'
