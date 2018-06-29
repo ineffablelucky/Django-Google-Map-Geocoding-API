@@ -1,6 +1,6 @@
 var map;
 
-var componentForm = {
+var componentForm = { // object with 'id' of input form tag as keys which is same as data returned by google api ; used for auto-fill
         locality: 'long_name',
         administrative_area_level_1: 'short_name',
         country: 'long_name'
@@ -17,10 +17,11 @@ $(document).on('click','#add_address', function() {
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 28.5355, lng: 77.3910},
+          center: {lat: 28.5355, lng: 77.3910}, // Noida set as center
           zoom: 12
     });
 
+    // CFT flag marker
     var marker1 = new google.maps.Marker({
             position: {lat: 28.5830, lng: 77.3132},
             map: map,
@@ -36,7 +37,7 @@ function initMap() {
 
     var marker;
     map.addListener('click', function(e) {
-        if(marker && marker.setMap){
+        if(marker && marker.setMap){  // removing previous marker and creating new one
             marker.setMap(null);
         }
 
@@ -44,8 +45,6 @@ function initMap() {
             position: e.latLng,
             map: map
         });
-
-        //marker = marker_new;
 
         var coordinates = {lat: parseFloat(e.latLng.lat()), lng: parseFloat(e.latLng.lng())}
 
@@ -61,7 +60,7 @@ function initMap() {
                                 Auto_fill_Address(results[0]);
 
                             } else {
-                                window.alert('No results found');
+                                window.alert('No address found');
                             }
 
                         } else {
