@@ -9,12 +9,12 @@
 </head>
 
 
-<!--<button><a href=% url 'add_company' %>ADD company</a></button>-->
+<button><a href="{% url 'create' %}">ADD a Place</a></button>
 
 <table>
     <thead>
         <tr>
-            <th class="companyname">Company</th>
+            <th class="name">Place</th>
             <th class="year">Lat</th>
             <th class="address">address</th>
             <th class="crud">update</th>
@@ -23,13 +23,13 @@
         </tr>
     </thead>
     <tbody>
-        {% for cname in companies%}
+        {% for p in places%}
         <tr>
 
-            <td>{{cname.name}}</td>
-            <td>{{cname.coordinate}}</td>
-            <td>{{cname.address}}</td>
-            <!--<td><button><a href=% url 'update' company_id=cname.id %>Update</a></button></td>-->
+            <td>{{p.name}}</td>
+            <td>{{p.coordinate}}</td>
+            <td>{{p.address}}</td>
+            <td><button><a href="{% url 'update' pk=p.id %}">Update</a></button></td>
 
         </tr>
         {% endfor %}

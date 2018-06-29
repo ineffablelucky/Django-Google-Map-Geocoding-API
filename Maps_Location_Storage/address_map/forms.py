@@ -54,6 +54,23 @@ class CreateForm(forms.ModelForm):
         model = Location
         exclude = ('coordinate',)  # saved in def save() function using lat and lng values from form
 
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        if self.instance.pk is not None:
+            '''
+            link: https://docs.djangoproject.com/en/2.0/ref/contrib/gis/geos/
+            
+            With any geometry object, the GEOSGeometry.coords property may be used to get the geometry coordinates 
+            as a Python tuple:
+
+            >>> pnt.coords
+            (5.0, 23.0)
+            '''
+            self.fields['lat'].initial = self.instance.coordinate.coords[0]  # .coords helps us access individual value
+            self.fields['lng'].initial = self.instance.coordinate.coords[1]
+
     def save(self, commit=True):
 
         entry = super().save(commit=False)

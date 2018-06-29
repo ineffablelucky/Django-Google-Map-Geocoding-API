@@ -1,0 +1,10 @@
+{% extends 'address_map/create_form.html' %}
+{% load static %}
+
+{% block content_form %}
+<form id="create" method="POST">
+     {% csrf_token %}
+     {{ form.as_p}}
+     <input type="submit" value="Confirm"/>
+ </form>
+{% endblock %}

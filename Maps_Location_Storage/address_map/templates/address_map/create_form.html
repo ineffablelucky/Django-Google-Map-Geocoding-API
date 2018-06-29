@@ -15,11 +15,16 @@
 
 </head>
 <body>
+
+{% block content_form %}
+
  <form id="create" method="POST">
      {% csrf_token %}
      {{ form.as_p}}
      <input type="submit" value="Confirm"/>
  </form>
+
+{% endblock %}
 
 <!-- Google map pop-up-->
 <div class="modal fade" id="create_map">
@@ -43,7 +48,7 @@
 
 
     <script src="{% static 'address_map/main.js' %}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq7oupLqHM2F9VQkuhukC6eIGwe2U1kFU&libraries=places&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq7oupLqHM2F9VQkuhukC6eIGwe2U1kFU&libraries=places"
     async defer></script>
 
 

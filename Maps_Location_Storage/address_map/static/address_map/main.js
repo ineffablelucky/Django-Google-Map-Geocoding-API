@@ -1,3 +1,8 @@
+/*
+NOTE: most 'id' attributes are taken from django forms.py as form was initialized there, so
+do check that file first if you are searching for any required id.
+*/
+
 var map;
 
 var componentForm = { // object with 'id' of input form tag as keys which is same as data returned by google api ; used for auto-fill
@@ -14,28 +19,38 @@ $(document).on('click','#add_address', function() {
 
 });
 
-
+/*
+NOTE: most 'id' attributes are taken from django forms.py as form was initialized there, so
+do check that file first if you are searching for any required id.
+*/
 function initMap() {
+    var latitude, longitude, marker;
+
+    if (document.getElementById('add_lat').value === '') { // for create case
+        latitude = 28.5355;
+        longitude = 77.3910;
+    } else { // for update case
+        latitude = parseFloat(document.getElementById('add_lat').value);
+        longitude = parseFloat(document.getElementById('add_lng').value);
+    }
+
     map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 28.5355, lng: 77.3910}, // Noida set as center
+          center: {lat: latitude, lng: longitude}, // Noida set as center
           zoom: 12
     });
 
-    // CFT flag marker
-    var marker1 = new google.maps.Marker({
-            position: {lat: 28.5830, lng: 77.3132},
-            map: map,
-            icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-    });
 
-//    var marker = new google.maps.Marker({
-//        position: {lat: 28.5355, lng: 77.3910},
-//        map: map
-//       });
+    if (document.getElementById('add_address').value !== '') {
+
+        marker = new google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
+        map: map
+       });
+
+    }
 
     var geocoder = new google.maps.Geocoder
 
-    var marker;
     map.addListener('click', function(e) {
         if(marker && marker.setMap){  // removing previous marker and creating new one
             marker.setMap(null);
@@ -71,6 +86,11 @@ function initMap() {
     });
 
  }
+
+/*
+NOTE: most 'id' attributes are taken from django forms.py as form was initialized there, so
+do check that file first if you are searching for any required id.
+*/
 
 function Auto_fill_Address(result){
 
