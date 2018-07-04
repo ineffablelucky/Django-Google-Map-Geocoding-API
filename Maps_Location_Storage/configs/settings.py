@@ -14,19 +14,16 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'p=exa7h^pyr&w^+kyz+%tuks%1fj+4c+%hx_h#sjdz&9$+j75x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -130,3 +127,8 @@ try:
 
 except ImportError as e:
     pass
+
+
+#  http://yallalabs.com/linux/how-to-install-and-use-postgresql-10-on-ubuntu-16-04/
+# http://yallalabs.com/linux/how-to-install-pgadmin-4-in-server-mode-on-ubuntu-16-04-lts/
+# http://yallalabs.com/linux/how-to-install-pgadmin-4-in-server-mode-on-ubuntu-16-04-lts/

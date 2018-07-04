@@ -18,7 +18,6 @@ def create(request):
             return redirect('index')
 
     else:
-
         form = CreateForm()  # getting form during a GET request
 
     return render(request, 'address_map/create_form.html', {'form': form})
